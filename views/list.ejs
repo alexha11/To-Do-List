@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset = "UTF-8">
+        <title>To Do List</title>
+    </head>
+    <body>
+        <!-- <% if (kindOfDay === "Sunday" || kindOfDay === "Saturday") {    %>
+            <h1 style="color:aqua"> <%= kindOfDay %> ToDo List</h1>
+        <% }   else { %>
+            <h1 style="color:darkkhaki"> <%= kindOfDay %> ToDo List</h1>
+        <% } %> -->
+        <h1><%= kindOfDay %></h1>
+        <ul>
+            <li><%= nameOfUser %></li>
+            <% for (let i = 0; i < newListItems.length; i++) { %>
+                <li><%= newListItems[i] %></li>
+            <% } %>
+        </ul>
+        <form action="/" method="POST">
+            <label for="to-do-label">Type things you need to do:</label>
+            <input type="text" placeholder="Type to-do things" name="newItem"><br><br>
+            <button type="submit" >Add</button><br><br><br><br>
+        </form>
+        <form action="/test" method="POST">
+            <p>Next Function Page</p>
+            <button type="submit">Next Page</button>
+        </form>
+    </body>
+</html>
