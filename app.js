@@ -5,6 +5,7 @@ const app = express()
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));
 
 var Items = ["Buy Food", "Cood Food"];
 var answer = "";
@@ -18,6 +19,9 @@ function isPrime(x) {
     }
     return true;
 } 
+// ! this need to be done sfe
+// ? write a function
+// * hi  
 
 app.get('/', (req, res) => {
     //console.log(addItem);
@@ -66,7 +70,7 @@ app.post("/", (req, res) => {
     res.redirect("/");
 })
 
-app.listen(3500, () => {
+app.listen(3500 || process.env.PORT, () => {
     console.log('Server is up on port 3500');
 });
 
