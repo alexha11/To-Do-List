@@ -8,14 +8,10 @@
 </head>
 
 <body>
-    <!-- <% if (kindOfDay === "Sunday" || kindOfDay === "Saturday") {    %>
-            <h1 style="color:aqua"> <%= kindOfDay %> ToDo List</h1>
-        <% }   else { %>
-            <h1 style="color:darkkhaki"> <%= kindOfDay %> ToDo List</h1>
-        <% } %> -->
+   
     <div class="box" id="heading">
         <h1>
-            <%= kindOfDay %>
+            <%= listTitle %>
         </h1>
     </div>
     <div class="box">
@@ -38,7 +34,7 @@
     </div>
     <form action="/test" method="POST">
         <p>Next Function Page</p>
-        <button type="submit">Next Page</button>
+        <button class="button-next" type="submit">Next Page</button>
     </form>
 </body>
 

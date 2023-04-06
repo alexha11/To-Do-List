@@ -7,9 +7,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-var Items = ["Buy Food", "Cood Food"];
+var Items = ["Buy Food", "Cook Food"];
 var answer = "";
-var number = 0;
 
 function isPrime(x) {
     for(let i = 2; i < x; i++) {
@@ -19,10 +18,12 @@ function isPrime(x) {
     }
     return true;
 } 
-// ! this need to be done sfe
-// ? write a function
-// * hi  
 
+function isEmpty(val) {
+    return (val === undefined || val == null || val.length <= 0) ? true : false;
+}
+
+//! Start get and post dir "/" 
 app.get('/', (req, res) => {
     //console.log(addItem);
     var today =  new Date(); 
@@ -36,41 +37,65 @@ app.get('/', (req, res) => {
 
     var day = today.toLocaleDateString("en-US", options);
     res.render("list", {
-        kindOfDay: day,
+        listTitle: day,
         nameOfUser: name,
         newListItems: Items
     });
 });
 
+app.post("/", (req, res) => {
+    let addItem = req.body.newItem;
+    if (!isEmpty(addItem)){
+        Items.push(addItem);
+    }
+    console.log(addItem);
+    res.redirect("/");
+})
+//! End
+
+//! Start get and post dir "/test"
 app.get('/test', (req, res) => {
-    if (isPrime(number)) {
-        answer = "Yup, the number is a prime";
-    }
-    else if(!isPrime(number)) {
-        answer = "No, the number is not a prime";
-    }
-    else {
-        answer = "";
-    }
     res.render("index", {
         answerInput: answer
     });
 });
 
 app.post('/test', (req, res) => {
-    number = req.body.testingInput;
-    console.log(parseInt(number));
+    let stringNumber = req.body.testingInput;
+    let intNumber = parseInt(stringNumber);
+
+    if (isPrime(intNumber)) {
+        answer = "Yup, the " + stringNumber + " is a prime";
+    }
+    else {
+        answer = "No, the "+ stringNumber + " is not a prime";
+    }
+
+    if (isEmpty(stringNumber)) {
+        answer = "--------------ANSWER-------------";
+    }
+    console.log(parseInt(stringNumber));
     res.redirect("/test");
 });
+//! End
 
-app.post("/", (req, res) => {
-    var addItem = req.body.newItem;
-    Items.push(addItem);
-    console.log(addItem);
-    res.redirect("/");
-})
-
+// //! Start get and post dir "/work"
+// let workItems = [];
+// app.get("/work", (req, res) => {
+//     res.render("list", {listTitle: "Work List", newListItems: workItems});
+// });
+// app.post('/work', (req, res) => {
+//     let item = req.body.item;
+//     workItems.push(item);
+//     res.redirect("/work");
+// })
+// //! End
 app.listen(3500 || process.env.PORT, () => {
     console.log('Server is up on port 3500');
 });
 
+
+
+// ! this need to be done sfe
+// ? write a function
+// * hi  

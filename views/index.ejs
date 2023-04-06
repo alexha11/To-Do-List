@@ -5,14 +5,14 @@
         <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
-        <h1>This is a page using for checking a number is a prime or not</h1>
+        <h1 style="color:red">This is a page using for checking a number is a prime or not</h1>
         <div>
             <form action="/test" method="POST">
                 <label>Input number</label>
-                <input placeholder="type some info" name="testingInput"><br><br>
+                <input placeholder="type number" name="testingInput" style="font-size:20px;"><br><br>
                 <button type="submit">Check</button><br><br><br><br>
             </form>
-            <p><%= answerInput %></p>
+            <p class="answer-checking-prime"><%= answerInput %></p>
         </div>
         <form action="/" method="POST">
             <p>Return back the main page</p>

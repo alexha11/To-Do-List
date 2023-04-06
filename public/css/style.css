@@ -58,7 +58,7 @@ form {
 
 button {
   min-height: 50px;
-  width: 50px;
+  width: 100px;
   border-radius: 50%;
   border-color: transparent;
   background-color: #A683E3;
@@ -82,6 +82,7 @@ input[type="text"] {
 input[type="text"]:focus {
   outline: none;
   box-shadow: inset 0 -3px 0 0 #A683E3;
+
 }
 
 ::placeholder {
@@ -98,4 +99,14 @@ footer {
 .author-sign {
   color:aqua;
   text-align: center;
+}
+
+.answer-checking-prime {
+  text-align: center;
+  background-color: aqua;
+
+}
+
+.button-next {
+  background-color: green;
 }
