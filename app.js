@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const test = require(__dirname + "/isPrime.js")
 
 const app = express()
 
@@ -10,14 +11,10 @@ app.use(express.static("public"));
 var Items = ["Buy Food", "Cook Food"];
 var answer = "";
 
-function isPrime(x) {
-    for(let i = 2; i < x; i++) {
-        if (x % i == 0) {
-            return false;
-        }
-    }
-    return true;
-} 
+Items = ["Buy Food", "Cook Food", "Eat Food"];
+
+console.log(test.isPrime(5));
+console.log(test.duong([2, 3, 4, 5, 6, 7]));
 
 function isEmpty(val) {
     return (val === undefined || val == null || val.length <= 0) ? true : false;
